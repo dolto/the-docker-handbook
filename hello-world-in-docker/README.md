@@ -60,7 +60,7 @@ In the world of containerization, there can not be anything more fundamental tha
 
 The official Docker [resources](https://www.docker.com/resources/what-container) site says, "A container is an abstraction at the application layer that packages code and dependencies together. Instead of virtualizing the entire physical machine, containers virtualize the host operating system only."
 
-You may consider containers as the next generation of virtual machines. Just like virtual machines, containers are completely isolated environments from the host system as well as each other. They are also a lot lighter than the traditional virtual machine hence a large number of containers can be run simultaneously without affecting the performance of the host system.
+You may consider containers as the next generation of virtual machines. Just like virtual machines, containers are completely isolated environments from the host system as well as each other. They are also a lot lighter than the traditional virtual machine, hence a large number of containers can be run simultaneously without affecting the performance of the host system.
 
 Containers and virtual machines are actually different ways of virtualizing your physical hardware. The main difference between these two is the method of virtualization.
 
@@ -68,7 +68,7 @@ Virtual machines are usually created and managed by a program known as a hypervi
 
 ![](virtual-machines.svg)
 
-Each virtual machine comes with its own guest operating system which is just as heavy as the host operating system. Applications running inside a virtual machine communicates with the guest operating system, which talks to the hypervisor, which then in turn talks to the host operating system to allocate necessary resources from the physical infrastructure to the running application.
+Each virtual machine comes with its own guest operating system which is just as heavy as the host operating system. Applications running inside a virtual machine communicate with the guest operating system, which talks to the hypervisor, which then in turn talks to the host operating system to allocate necessary resources from the physical infrastructure to the running application.
 
 As you can see, there is a long chain of communication between applications running inside virtual machines and the physical infrastructure. The application running inside the virtual machine may take only a small amount of resources but the guest operating system adds a noticeable overhead.
 
@@ -98,7 +98,7 @@ Images are multi-layered self-contained files that act as the template for creat
 
 In the past, different container engines had different image formats but later on [Open Container Initiative \(OCI\)](https://opencontainers.org/) defined a standard specification for container images which is complied by the major containerization engines out there. This means that an image built with Docker can be used with another runtime like Podman without any additional hassle.
 
-Containers are just images in running state. When you obtain an image from the internet and run a container using that, you essentially create another temporary writable layer on top of the previous read-only ones. This concept will become a lot more clearer in upcoming chapters but for now, just keep in mind that images are multi-layered read-only files carrying your application in a desired state inside them.
+Containers are just images in running state. When you obtain an image from the internet and run a container using that, you essentially create another temporary writable layer on top of the previous read-only ones. This concept will become a lot clearer in upcoming chapters but for now, just keep in mind that images are multi-layered read-only files carrying your application in a desired state inside them.
 
 ## Registry
 
@@ -128,18 +128,18 @@ You as user will usually execute commands using the client component. The client
 
 ## The Full Picture
 
-Okay, enough talking. Now it's time for you to understand how all these pieces of puzzle you just learned about works in harmony. Before I dive into the explanation of what really happened when you ran `docker run hello-world` command, let me show you a little diagram I've made:
+Okay, enough talking. Now it's time for you to understand how all these pieces of puzzle you just learned about works in harmony. Before I dive into the explanation of what really happened when you ran the command `docker run hello-world`, let me show you a little diagram I've made:
 
 ![](docker-run-hello-world.svg)
 
 This image is a slightly modified version of the one found in the official [docs](https://docs.docker.com/engine/images/architecture.svg). The series of events that occurred when you executed the command can be listed as follows:
 
-1. You execute `docker run hello-world` command where `hello-world` is the name of an image.
+1. You execute the command `docker run hello-world` where `hello-world` is the name of an image.
 2. Docker client reaches out to the daemon, tells it to get the `hello-world` image and run a container from that.
 3. Docker daemon looks for the image within your local repository and realizes that it's not there, hence the `Unable to find image 'hello-world:latest' locally` line gets printed on your terminal.
 4. The daemon then reaches out to the default public registry which is Docker Hub and pulls in the latest copy of the `hello-world` image, indicated by the `latest: Pulling from library/hello-world` line in your terminal.
 5. Docker daemon then creates a new container from the freshly pulled image.
-6. Finally Docker daemon runs the container created using the `hello-world` image outputting the wall of text on your terminal.
+6. Finally, Docker daemon runs the container created using the `hello-world` image outputting the wall of text on your terminal.
 
 It's the default behavior of Docker daemon to look for images in the hub, that are not present locally. But once an image has been fetched, it'll stay in the local cache. So if you execute the command again, you won't see the following lines in the output:
 
