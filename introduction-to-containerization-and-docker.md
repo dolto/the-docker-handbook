@@ -14,7 +14,7 @@ If you make a list of the dependencies, that list may look like as follows:
 * Express.js
 * SQLite3
 
-Well theoretically this should be it. But practically there are some other stuff as well. Turns out [Node.js](https://nodejs.org/) uses a build tool known as `node-gyp` for building native add-ons and according to the [installation instruction](https://github.com/nodejs/node-gyp#installation) in the [official repository](https://github.com/nodejs/node-gyp), this build tool requires Python 2/3 and a proper C/C++ compiler tool-chain. Taking all these into account, the final list of dependencies is as follows:
+Well theoretically this should be it. But practically there is some other stuff as well. Turns out [Node.js](https://nodejs.org/) uses a build tool known as `node-gyp` for building native add-ons and according to the [installation instruction](https://github.com/nodejs/node-gyp#installation) in the [official repository](https://github.com/nodejs/node-gyp), this build tool requires Python 2/3 and a proper C/C++ compiler tool-chain. Taking all these into account, the final list of dependencies is as follows:
 
 * Node.js
 * Express.js
@@ -22,7 +22,7 @@ Well theoretically this should be it. But practically there are some other stuff
 * Python 2/3
 * C/C++ tool-chain
 
-Installing Python 2/3 is pretty straight forward regardless of the platform you're on. Setting-up C/C++ tool-chain is pretty easy on Linux but on Windows and Mac, it's a painful task. On Windows, the C++ build tools package measures at gigabytes and takes quite some time to install. On a Mac, you can either install the gigantic [Xcode](https://developer.apple.com/xcode/) application or the much smaller [Command Line Tools for Xcode](https://developer.apple.com/downloads/) package. Regardless of the one you install, it still may break on OS updates. In fact, the problem is so prevalent that there are [Installation notes for macOS Catalina](https://github.com/nodejs/node-gyp/blob/master/macOS_Catalina.md) available on the official repository.
+Installing Python 2/3 is pretty straight forward regardless of the platform you're on. Setting up a C/C++ tool-chain is pretty easy on Linux but on Windows and Mac, it's a painful task. On Windows, the C++ build tools package measures at gigabytes and takes quite some time to install. On a Mac, you can either install the gigantic [Xcode](https://developer.apple.com/xcode/) application or the much smaller [Command Line Tools for Xcode](https://developer.apple.com/downloads/) package. Regardless of the one you install, it still may break on OS updates. In fact, the problem is so prevalent that there are [Installation notes for macOS Catalina](https://github.com/nodejs/node-gyp/blob/master/macOS_Catalina.md) available on the official repository.
 
 Let's assume that you've gone through all the hassles of setting up the dependencies and have started working on the project. Does that mean you're out of danger now? Of course not.
 
